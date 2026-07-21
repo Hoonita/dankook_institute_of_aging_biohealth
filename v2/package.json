@@ -1,13 +1,13 @@
 {
   "name": "dankook-university-dia-biohealth",
-  "version": "0.2.0",
+  "version": "2.1.0",
   "private": true,
   "engines": { "node": "22.x" },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "test": "npm run build && node --test tests/static-export.test.mjs",
-    "lint": "eslint . --ignore-pattern out --ignore-pattern .next"
+    "lint": "eslint . --ignore-pattern out --ignore-pattern .next --ignore-pattern dist"
   },
   "dependencies": {
     "next": "16.2.6",

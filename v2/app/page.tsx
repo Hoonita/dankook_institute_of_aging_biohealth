@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const researchAreas = [
   { code: "A01", ko: "세포 내 분자기전", en: "Molecular mechanisms", text: "세포 안에서 신호와 물질이 이동하고 기능을 조절하는 원리를 탐구합니다." },
@@ -10,12 +11,49 @@ const researchAreas = [
   { code: "A05", ko: "디지털 바이오마커·임상중개", en: "Digital biomarkers & translation", text: "기초연구의 발견을 임상 평가와 바이오헬스 기술로 연결합니다." },
 ];
 
-const programs = [
-  { no: "01", type: "LECTURE", title: "글로벌 석학 공개강연", en: "Global Scholar Lecture Series", date: "2026.08 — 11", desc: "최신 분자·세포생물학 연구성과와 글로벌 연구동향을 공유하는 공개형 강연입니다." },
-  { no: "02", type: "MENTORING", title: "차세대 연구자 글로벌 멘토링", en: "Global Research Mentoring Program", date: "2026.09 — 11", desc: "연구 관심 분야에 따라 5개 그룹을 구성하고, 그룹별 3회의 1:5 소그룹 멘토링을 진행합니다." },
-  { no: "03", type: "CLINIC", title: "연구설계 및 논문리뷰 컨설팅", en: "Research Design & Review Clinic", date: "2026.09 — 11", desc: "연구질문, 실험설계, 연구계획서와 학술발표 자료를 단계적으로 고도화합니다." },
-  { no: "04", type: "NETWORK", title: "연구자 교류 및 네트워킹 포럼", en: "Global Research Networking Forum", date: "2026.11 — 12", desc: "해외 석학, 중점 양성자, 국내 연구자가 연구경험과 국제 진로를 나누는 교류의 장입니다." },
-  { no: "05", type: "SYMPOSIUM", title: "바이오헬스 국제학술세미나", en: "Biohealth International Symposium", date: "2026.12", desc: "기조강연, Young Investigator Session, 패널토론과 연구자 라운드테이블을 연결합니다." },
+const tracks = [
+  {
+    no: "01", short: "MOLECULAR / CELLULAR", title: "인간질환의 고급 분자·세포생물학적 기전",
+    en: "Advanced Molecular and Cellular Mechanisms of Human Disease",
+    goal: "MD 참여자가 임상현장의 미충족 수요를 세포 신호전달, 물질수송, 소기관 기능, 단백질 항상성, 염증과 세포 스트레스에 기반한 검증 가능한 연구질문으로 전환합니다.",
+    result: "분자·세포기전 연구계획서 · 조별 연구발표 또는 포스터 · 내러티브/스코핑 리뷰 초안",
+    weeks: [
+      ["01", "9월 1주", "오리엔테이션 및 그룹 편성", "개인별 임상질문 2–3개와 관심 질환 목록"],
+      ["02", "9월 2주", "연구계획 초안 구성", "연구질문·목적·잠정 가설"],
+      ["03", "9월 3주", "멘토링 1 및 컨설팅 1", "중심가설과 기전 개념도 초안"],
+      ["04", "9월 4주", "기조강연 1 및 네트워킹 1", "세포 내 수송·소기관 기능 연계 메모"],
+      ["05", "10월 1주", "실습 1 — Genotyping", "APOE PCR·gel image와 genotype 판정표"],
+      ["06", "10월 2주", "실습 2 — Cell Culture", "배양 기록과 세포 품질관리 체크리스트"],
+      ["07", "10월 3주", "실습 3 — Protein Analysis", "SDS-PAGE 및 band 정량·해석 결과"],
+      ["08", "10월 4주", "멘토링 2 및 컨설팅 2", "수정 Specific aims와 실험군 구성"],
+      ["09", "11월 1주", "기조강연 2 및 네트워킹 2", "인과성·재현성 기반 중간 연구설계"],
+      ["10", "11월 2주", "AI 학술발표 특강 및 특별네트워킹", "학술발표 초안과 기전·실험 흐름도"],
+      ["11", "11월 3주", "AI 학술논문 특강 및 특별네트워킹", "연구계획서와 Review article 초안"],
+      ["12", "11월 4주", "멘토링 3 및 컨설팅 3", "최종 연구계획서와 멘토링 결과보고서"],
+      ["13", "12월 1주", "국제학술세미나", "구두/포스터 발표와 최종 성과물"],
+    ],
+  },
+  {
+    no: "02", short: "DISEASE MODELING", title: "인간 질환모델링과 실험적 중개연구",
+    en: "Human Disease Modeling and Experimental Translation",
+    goal: "MD 참여자가 임상질환을 재현할 2D·primary cell, iPSC, 오가노이드, 동물·조직공학 모델을 선택하고 타당성, 한계와 재현성을 검증합니다.",
+    result: "질환모델 연구계획서 · 조별 발표 또는 포스터 · 모델 품질관리표 · 전임상–임상 translation map",
+    weeks: [
+      ["01", "9월 1주", "오리엔테이션 및 그룹 편성", "관심 질환과 후보 질환모델 목록"],
+      ["02", "9월 2주", "연구계획 초안 구성", "질환기전–표현형–후보 모델 연결표"],
+      ["03", "9월 3주", "멘토링 1 및 컨설팅 1", "중심가설과 모델 선정기준"],
+      ["04", "9월 4주", "기조강연 1 및 네트워킹 1", "질환기전–모델 연계와 모델링 전략"],
+      ["05", "10월 1주", "실습 1 — Genotyping", "APOE 유전형–질환표현형 연계표"],
+      ["06", "10월 2주", "실습 2 — Cell Culture", "세포모델 품질관리 체크리스트"],
+      ["07", "10월 3주", "실습 3 — Protein Analysis", "분자표현형과 후보 바이오마커 분석"],
+      ["08", "10월 4주", "멘토링 2 및 컨설팅 2", "최종 모델·대조군·endpoint·Specific aims"],
+      ["09", "11월 1주", "기조강연 2 및 네트워킹 2", "기전 검증과 재현성 기반 실험 흐름도"],
+      ["10", "11월 2주", "AI 학술발표 특강 및 특별네트워킹", "질환모델 연구발표와 연구모식도"],
+      ["11", "11월 3주", "AI 학술논문 특강 및 특별네트워킹", "재현성·편향 관리계획과 논문 초안"],
+      ["12", "11월 4주", "멘토링 3 및 컨설팅 3", "최종 프로토콜과 translation map"],
+      ["13", "12월 1주", "국제학술세미나", "모델 타당성·재현성·임상중개 평가"],
+    ],
+  },
 ];
 
 const scholars = [
@@ -34,7 +72,7 @@ const timeline = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [openProgram, setOpenProgram] = useState(1);
+  const [activeTrack, setActiveTrack] = useState(0);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -43,7 +81,9 @@ export default function Home() {
       <a className="skip-link" href="#content">본문으로 바로가기</a>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="단국대학교 단국노화연구소 홈" onClick={closeMenu}>
-          <span className="brand-mark" aria-hidden="true"><b>D</b><i /></span>
+          <Image className="dku-logo" src="/logos/dku-logo.jpg" alt="단국대학교 DKU" width={435} height={263} unoptimized />
+          <span className="brand-divider" aria-hidden="true" />
+          <Image className="dia-logo" src="/logos/dia-logo.png" alt="단국노화연구소 DIA" width={149} height={43} unoptimized />
           <span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING</small></span>
         </a>
         <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="main-nav" onClick={() => setMenuOpen(!menuOpen)}>
@@ -123,21 +163,22 @@ export default function Home() {
 
         <section id="programs" className="section programs-section">
           <div className="program-intro">
-            <p className="kicker">02 / FIVE CONNECTED PROGRAMS</p>
-            <h2>듣는 강연에서<br /><em>설계하는 연구로</em></h2>
-            <p>공개강연, 소그룹 멘토링, 연구설계 컨설팅, 네트워킹과 국제학술세미나가 하나의 성장 여정으로 연결됩니다.</p>
-            <div className="program-key"><span>OPEN</span> 공개 프로그램 <span>SELECTED</span> 중점 양성자 프로그램</div>
+            <p className="kicker">02 / TWO INTENSIVE TRACKS · 13 WEEKS</p>
+            <h2>임상의 질문을<br /><em>검증 가능한 연구로</em></h2>
+            <p>9월부터 12월까지 두 개의 13주 트랙을 운영합니다. 국내 연구진의 설계 지도, 3회의 글로벌 멘토링, Wet-lab 실습과 국제학술세미나가 하나의 과정으로 이어집니다.</p>
+            <div className="program-key"><span>5 GROUPS</span> 순환·동시 실습 <span>3 VISITS</span> 글로벌 석학 집중 멘토링</div>
           </div>
-          <div className="program-list">
-            {programs.map((program, index) => {
-              const isOpen = openProgram === index;
-              return <article className={isOpen ? "program-row is-open" : "program-row"} key={program.no}>
-                <button type="button" aria-expanded={isOpen} onClick={() => setOpenProgram(isOpen ? -1 : index)}>
-                  <span>{program.no}</span><div><small>{program.type}</small><h3>{program.title}</h3><p>{program.en}</p></div><time>{program.date}</time><i aria-hidden="true">{isOpen ? "−" : "+"}</i>
-                </button>
-                {isOpen && <div className="program-detail"><p>{program.desc}</p><a href="#schedule">연간 일정에서 확인 <span>→</span></a></div>}
-              </article>;
-            })}
+          <div className="track-panel">
+            <div className="track-tabs" role="tablist" aria-label="13주 프로그램 선택">
+              {tracks.map((track, index) => <button key={track.no} type="button" role="tab" aria-selected={activeTrack === index} aria-controls={`track-${track.no}`} onClick={() => setActiveTrack(index)}><span>PROGRAM {track.no}</span>{track.short}</button>)}
+            </div>
+            {tracks.map((track, index) => <article id={`track-${track.no}`} role="tabpanel" hidden={activeTrack !== index} className="track-detail" key={track.no}>
+              <header><span>PROGRAM {track.no} / SEP — DEC 2026</span><h3>{track.title}</h3><p className="track-en">{track.en}</p><p>{track.goal}</p><div><b>FINAL OUTPUT</b>{track.result}</div></header>
+              <div className="week-list">
+                {track.weeks.map(([week, date, title, output]) => <div className="week-row" key={week}><span>{week}</span><time>{date}</time><h4>{title}</h4><p>{output}</p></div>)}
+              </div>
+              <aside className="lab-note"><b>WET-LAB OPERATING PRINCIPLE</b><p>5개 그룹이 순환 또는 동시 참여하며, 오전에는 실험원리·안전교육·SOP를 익히고 오후에는 직접 실험과 결과 정리를 수행합니다.</p><span>GENOTYPING</span><span>CELL CULTURE</span><span>PROTEIN ANALYSIS</span></aside>
+            </article>)}
           </div>
         </section>
       </div>
@@ -168,7 +209,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#top"><span className="brand-mark" aria-hidden="true"><b>D</b><i /></span><span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING</small></span></a>
+        <a className="brand footer-brand" href="#top"><Image className="dku-logo" src="/logos/dku-logo.jpg" alt="단국대학교 DKU" width={435} height={263} unoptimized /><span className="brand-divider" aria-hidden="true" /><Image className="dia-logo" src="/logos/dia-logo.png" alt="단국노화연구소 DIA" width={149} height={43} unoptimized /><span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING · v2.1</small></span></a>
         <div><strong>글로벌 분자·세포생물학 미래인재 양성 멘토십 프로그램</strong><p>주관: 단국노화연구소 (Dankook Institute of Aging)</p><p>단국대학교 의과대학 · 단국대학교병원 · 바이오융합대학</p><p>충청남도 천안시 동남구 단대로 119</p></div>
         <div className="footer-meta"><p>GLOBAL MENTORSHIP PROGRAM<br />FOR FUTURE LEADERS IN<br />MOLECULAR &amp; CELLULAR BIOLOGY</p><a href="#top">TOP ↑</a></div>
         <p className="copyright">© 2026 DANKOOK UNIVERSITY. ALL RIGHTS RESERVED.</p>
