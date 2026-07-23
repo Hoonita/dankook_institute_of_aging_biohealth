@@ -1,6 +1,6 @@
-# Dankook University Biohealth Mentorship v4.1
+# Dankook University Biohealth Mentorship v4.2
 
-Netlify 배포용 단국대학교·단국노화연구소 글로벌 분자·세포생물학 멘토십 정적 웹사이트입니다. v4.1에는 석학별 상세 프로필, 접수 마감 안내와 참가 공고문 팝업이 반영되어 있습니다.
+Netlify 배포용 단국대학교·단국노화연구소 글로벌 분자·세포생물학 멘토십 정적 웹사이트입니다. v4.2에는 석학별 상세 프로필, 접수 마감 안내, 참가 공고문 팝업과 연구 분야·선발 기준 영역의 밝은 파란색 배경이 반영되어 있습니다.
 
 ## 로컬 실행
 

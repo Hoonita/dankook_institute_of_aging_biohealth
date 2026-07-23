@@ -339,7 +339,7 @@ export default function Home() {
       </div>}
 
       <footer>
-        <a className="brand footer-brand" href="#top"><Image className="dku-logo" src="/logos/dku-logo.jpg" alt="단국대학교 DKU" width={435} height={263} unoptimized /><span className="brand-divider" aria-hidden="true" /><Image className="dia-logo" src="/logos/dia-logo.png" alt="단국노화연구소 DIA" width={149} height={43} unoptimized /><span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING · v4.1</small></span></a>
+        <a className="brand footer-brand" href="#top"><Image className="dku-logo" src="/logos/dku-logo.jpg" alt="단국대학교 DKU" width={435} height={263} unoptimized /><span className="brand-divider" aria-hidden="true" /><Image className="dia-logo" src="/logos/dia-logo.png" alt="단국노화연구소 DIA" width={149} height={43} unoptimized /><span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING · v4.2</small></span></a>
         <div className="footer-info"><strong>글로벌 분자·세포생물학 미래인재 양성 멘토십 프로그램</strong><p><b>주관</b> 단국대학교 <span>(단국노화연구소 DIA · 의과대학 · 단국대학교병원 · 의학융합학과)</span></p><p><b>지원</b> 보건복지부 · 한국보건산업진흥원</p><p><b>문의</b> <a href="mailto:dku_gm2026@dankook.ac.kr">dku_gm2026@dankook.ac.kr</a></p><p>충청남도 천안시 동남구 단대로 119</p></div>
         <div className="footer-meta"><p>GLOBAL MENTORSHIP PROGRAM<br />FOR FUTURE LEADERS IN<br />MOLECULAR &amp; CELLULAR BIOLOGY</p><a href="#top">TOP ↑</a></div>
         <p className="copyright">© 2026 DANKOOK UNIVERSITY. ALL RIGHTS RESERVED.</p>
