@@ -9,6 +9,7 @@ test("exports a deployable static homepage", async () => {
   await access(new URL("404.html", outputRoot));
   await access(new URL("_next/", outputRoot));
   await access(new URL("logos/dku-logo.jpg", outputRoot));
+  await access(new URL("logos/dku-logo-transparent.png", outputRoot));
   await access(new URL("logos/dia-logo.png", outputRoot));
   await access(new URL("mentors/giampietro-schiavo.png", outputRoot));
   await access(new URL("mentors/dennis-chan.png", outputRoot));
@@ -28,6 +29,7 @@ test("exports a deployable static homepage", async () => {
   assert.match(html, /인간 질환모델링과 실험적 중개연구/);
   assert.match(html, /국제학술세미나/);
   assert.match(html, /\/logos\/dku-logo\.jpg/);
+  assert.match(html, /\/logos\/dku-logo-transparent\.png/);
   assert.match(html, /\/logos\/dia-logo\.png/);
   assert.match(html, /선발 기준/);
   assert.match(html, /연구 분야 적합성/);

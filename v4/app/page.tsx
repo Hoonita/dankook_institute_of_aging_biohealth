@@ -174,7 +174,7 @@ export default function Home() {
       <a className="skip-link" href="#content">본문으로 바로가기</a>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="단국대학교 단국노화연구소 홈" onClick={closeMenu}>
-          <Image className="dku-logo" src="/logos/dku-logo.jpg" alt="단국대학교 DKU" width={435} height={263} unoptimized />
+          <Image className="dku-logo" src="/logos/dku-logo-transparent.png" alt="단국대학교 DKU" width={429} height={231} unoptimized />
           <span className="brand-divider" aria-hidden="true" />
           <Image className="dia-logo" src="/logos/dia-logo.png" alt="단국노화연구소 DIA" width={149} height={43} unoptimized />
           <span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING</small></span>
