@@ -24,13 +24,13 @@ em { font-style:normal; color:var(--teal); }
 .brand-name small { color:#93a5ae; font:500 7px/1 var(--font-geist-mono),monospace; letter-spacing:.09em; white-space:nowrap; }
 .site-header .brand-name strong { color:var(--navy); }
 .site-header .brand-name small { color:var(--slate); }
-.nav-links { display:flex; justify-content:center; gap:clamp(14px,1.8vw,30px); font-size:13px; color:var(--slate); }
+.nav-links { display:flex; justify-content:center; gap:clamp(14px,1.8vw,30px); font-size:14px; font-weight:700; color:var(--slate); }
 .nav-links a { position:relative; padding:8px 0; }
 .nav-links a::after { content:""; position:absolute; left:0; right:100%; bottom:0; height:1px; background:var(--teal); transition:right .25s; }
 .nav-links a:hover { color:var(--navy); }
 .nav-links a:hover::after { right:0; }
-.header-cta { justify-self:end; border:1px solid var(--teal); color:var(--teal); padding:12px 17px; font-size:13px; font-weight:700; transition:.2s; }
-.header-cta:hover { background:var(--teal); color:var(--ivory); }
+.header-cta { justify-self:end; border:1px solid var(--teal); background:var(--teal); color:var(--ivory); padding:12px 17px; font-size:13px; font-weight:750; transition:.2s; }
+.header-cta:hover { border-color:var(--navy); background:var(--navy); color:var(--ivory); }
 .header-cta span { margin-left:14px; }
 .menu-toggle { display:none; background:none; border:0; }
 
