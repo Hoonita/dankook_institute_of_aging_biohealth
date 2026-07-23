@@ -1,6 +1,6 @@
-# Dankook University Biohealth Mentorship v3
+# Dankook University Biohealth Mentorship v3.1
 
-Netlify 배포용 단국대학교·단국노화연구소 글로벌 분자·세포생물학 멘토십 정적 웹사이트입니다. v3에는 공식 멘토 사진, 독립 선발 기준과 신청 이메일이 반영되어 있습니다.
+Netlify 배포용 단국대학교·단국노화연구소 글로벌 분자·세포생물학 멘토십 정적 웹사이트입니다. v3.1에는 공식 멘토 사진, 독립 선발 기준, 신청 안내와 참여신청서 다운로드가 반영되어 있습니다.
 
 ## 로컬 실행
 

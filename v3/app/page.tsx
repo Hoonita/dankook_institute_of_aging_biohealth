@@ -58,8 +58,8 @@ const tracks = [
 
 const scholars = [
   { no: "01", status: "핵심 Global Research Mentor", name: "Giampietro Schiavo", org: "UCL · UK Dementia Research Institute", image: "/mentors/giampietro-schiavo.png", fields: ["Molecular & Cellular Biology", "Axonal Transport", "Neurodegeneration"], role: "공개강연 · 소그룹 멘토링 · 연구설계 컨설팅 · 기조강연" },
-  { no: "02", status: "초빙 예정", name: "Dennis Chan", org: "University College London", image: "/mentors/dennis-chan.png", fields: ["Cognitive Neuroscience", "Translational Research", "Digital Biomarkers"], role: "국제학술세미나 · 온라인 연구교류 · 네트워킹" },
-  { no: "03", status: "초빙 예정", name: "Tiago Rito", org: "The University of Hong Kong", image: "/mentors/tiago-rito.png", fields: ["Stem Cell Biology", "Tissue Engineering", "Human Disease Modeling"], role: "국제학술세미나 · 온라인 연구교류 · 네트워킹" },
+  { no: "02", status: "", name: "Dennis Chan", org: "University College London", image: "/mentors/dennis-chan.png", fields: ["Cognitive Neuroscience", "Translational Research", "Digital Biomarkers"], role: "국제학술세미나 · 온라인 연구교류 · 네트워킹" },
+  { no: "03", status: "", name: "Tiago Rito", org: "The University of Hong Kong", image: "/mentors/tiago-rito.png", fields: ["Stem Cell Biology", "Tissue Engineering", "Human Disease Modeling"], role: "국제학술세미나 · 온라인 연구교류 · 네트워킹" },
 ];
 
 const selectionCriteria = [
@@ -101,6 +101,7 @@ export default function Home() {
           <a href="#programs" onClick={closeMenu}>프로그램</a>
           <a href="#scholars" onClick={closeMenu}>글로벌 석학</a>
           <a href="#schedule" onClick={closeMenu}>일정</a>
+          <a href="#selection" onClick={closeMenu}>선발 기준</a>
         </nav>
         <a className="header-cta" href="#apply">멘토십 안내 <span>↗</span></a>
       </header>
@@ -193,8 +194,8 @@ export default function Home() {
         <header className="dark-heading"><div><span>03</span><p>GLOBAL<br />RESEARCH MENTORS</p></div><div><p className="kicker">THREE PERSPECTIVES, ONE RESEARCH JOURNEY</p><h2>세계의 연구 현장과<br />당신의 질문을 연결합니다</h2></div></header>
         <div className="scholar-grid">
           {scholars.map((scholar) => <article key={scholar.no}>
-            <div className="scholar-top"><span>MENTOR / {scholar.no}</span><small>{scholar.status}</small></div>
-            <div className={`portrait portrait-${scholar.no}`}><Image src={scholar.image} alt={`${scholar.name} 교수`} fill sizes="(max-width: 720px) 100vw, (max-width: 1000px) 50vw, 33vw" unoptimized /><span aria-hidden="true">0{scholar.no} / PORTRAIT</span></div>
+            <div className="scholar-top"><span>MENTOR / {scholar.no}</span>{scholar.status && <small>{scholar.status}</small>}</div>
+            <div className={`portrait portrait-${scholar.no}`}><Image src={scholar.image} alt={`${scholar.name} 교수`} fill sizes="(max-width: 720px) 100vw, (max-width: 1000px) 50vw, 33vw" unoptimized /><span aria-hidden="true">{scholar.no}</span></div>
             <h3>{scholar.name}</h3><p className="org">{scholar.org}</p>
             <ul>{scholar.fields.map(field => <li key={field}>{field}</li>)}</ul>
             <p className="scholar-role"><span>ROLE</span>{scholar.role}</p>
@@ -217,17 +218,17 @@ export default function Home() {
             <h3>{criterion.title}</h3><p>{criterion.text}</p>
           </article>)}
         </div>
-        <p className="criteria-note">※ 세부 기준은 내규에 따름</p>
+        <p className="criteria-note">※ 선발 세부 기준은 내규에 따르며, 제출된 신청서 내용에 따라 선발 예정</p>
       </section>
 
       <section id="apply" className="apply-section">
         <div className="apply-atlas" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="apply-copy"><p className="kicker">05 / FOR EMERGING RESEARCHERS</p><h2>당신의 연구 질문을<br /><em>세계와 연결할 차례</em></h2><p>만 40세 미만 대학(원)생, 의대생, 전공의(MD), 박사후연구원 및 젊은 연구자를 대상으로 약 25명을 선발할 예정입니다.</p><div className="apply-notes"><span>1:5 소그룹</span><span>그룹별 3회</span><span>회차별 2시간 이상</span><span>성과물 1건 이상</span></div><a className="button button-primary" href="mailto:dku_gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청 문의">프로그램 문의하기 <span>↗</span></a></div>
+        <div className="apply-copy"><p className="kicker">05 / FOR EMERGING RESEARCHERS</p><h2>당신의 연구 질문을<br /><em>세계와 연결할 차례</em></h2><p>만 40세 미만 대학(원)생, 의대생, 전공의(MD), 박사후연구원 및 젊은 연구자를 대상으로 약 25명을 선발할 예정입니다.</p><div className="apply-notes"><span>1:5 소그룹</span><span>그룹별 3회</span><span>회차별 2시간 이상</span><span>성과물 1건 이상</span></div><div className="apply-actions"><a className="button button-primary" href="mailto:dku_gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청 문의">프로그램 문의하기 <span>↗</span></a><a className="button button-download" href="/downloads/dku-global-mentorship-application-2026.docx" download="[서식1-4] 2026년_바이오헬스_글로벌_석학_멘토십_프로그램_지원서식_v1.docx">멘토링 프로그램 참여신청서 양식 다운로드 <span>DOCX ↓</span></a></div><div className="application-guide"><span>신청 이메일</span><a href="mailto:dku_gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청">dku_gm2026@gmail.com</a><p>신청서 작성 후 첨부하여 제출</p></div></div>
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#top"><Image className="dku-logo" src="/logos/dku-logo.jpg" alt="단국대학교 DKU" width={435} height={263} unoptimized /><span className="brand-divider" aria-hidden="true" /><Image className="dia-logo" src="/logos/dia-logo.png" alt="단국노화연구소 DIA" width={149} height={43} unoptimized /><span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING · v3</small></span></a>
-        <div><strong>글로벌 분자·세포생물학 미래인재 양성 멘토십 프로그램</strong><p>주관: 단국노화연구소 (Dankook Institute of Aging)</p><p>단국대학교 의과대학 · 단국대학교병원 · 바이오융합대학</p><p>충청남도 천안시 동남구 단대로 119</p></div>
+        <a className="brand footer-brand" href="#top"><Image className="dku-logo" src="/logos/dku-logo.jpg" alt="단국대학교 DKU" width={435} height={263} unoptimized /><span className="brand-divider" aria-hidden="true" /><Image className="dia-logo" src="/logos/dia-logo.png" alt="단국노화연구소 DIA" width={149} height={43} unoptimized /><span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING · v3.1</small></span></a>
+        <div className="footer-info"><strong>글로벌 분자·세포생물학 미래인재 양성 멘토십 프로그램</strong><p><b>주관</b> 단국대학교 <span>(단국노화연구소 DIA · 의과대학 · 단국대학교병원 · 의학융합학과)</span></p><p><b>지원</b> 보건복지부 · 한국보건산업진흥원</p><p><b>문의</b> <a href="mailto:dku_gm2026@dankook.ac.kr">dku_gm2026@dankook.ac.kr</a></p><p>충청남도 천안시 동남구 단대로 119</p></div>
         <div className="footer-meta"><p>GLOBAL MENTORSHIP PROGRAM<br />FOR FUTURE LEADERS IN<br />MOLECULAR &amp; CELLULAR BIOLOGY</p><a href="#top">TOP ↑</a></div>
         <p className="copyright">© 2026 DANKOOK UNIVERSITY. ALL RIGHTS RESERVED.</p>
       </footer>
