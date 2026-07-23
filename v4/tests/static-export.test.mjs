@@ -17,6 +17,7 @@ test("exports a deployable static homepage", async () => {
   await access(new URL("mentors/profiles/dennis-chan-natural.webp", outputRoot));
   await access(new URL("mentors/profiles/tiago-rito-natural.jpg", outputRoot));
   await access(new URL("downloads/dku-global-mentorship-application-2026.docx", outputRoot));
+  await access(new URL("posters/dku-mentorship-2026-poster.png", outputRoot));
 
   const html = await readFile(new URL("index.html", outputRoot), "utf8");
   const source = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
@@ -58,4 +59,10 @@ test("exports a deployable static homepage", async () => {
   assert.match(source, /event\.key === "Escape"/);
   assert.match(source, /GLOBAL SCHOLAR · CORE PROFILE/);
   assert.match(source, /멘토링 프로그램 참여신청서<br \/>양식 다운로드/);
+  assert.match(html, /D-DAY 접수마감/);
+  assert.match(html, /2026년 8월 21일 까지/);
+  assert.match(html, /참가 공고문 보기/);
+  assert.match(source, /\/posters\/dku-mentorship-2026-poster\.png/);
+  assert.match(source, /id="poster-title"/);
+  assert.match(source, /aria-label="참가 공고문 닫기"/);
 });

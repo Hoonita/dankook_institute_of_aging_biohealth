@@ -98,8 +98,11 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeTrack, setActiveTrack] = useState(0);
   const [activeScholar, setActiveScholar] = useState<number | null>(null);
+  const [posterOpen, setPosterOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const scholarTriggerRef = useRef<HTMLElement | null>(null);
+  const posterDialogRef = useRef<HTMLDivElement>(null);
+  const posterTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   const closeMenu = () => setMenuOpen(false);
   const openScholar = (index: number, trigger: HTMLElement) => {
@@ -135,6 +138,36 @@ export default function Home() {
       scholarTriggerRef.current?.focus();
     };
   }, [activeScholar]);
+
+  useEffect(() => {
+    if (!posterOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const dialog = posterDialogRef.current;
+    const trigger = posterTriggerRef.current;
+    dialog?.querySelector<HTMLElement>(".poster-close")?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setPosterOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !dialog) return;
+      const focusable = Array.from(dialog.querySelectorAll<HTMLElement>('button, [href], [tabindex]:not([tabindex="-1"])'));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+      trigger?.focus();
+    };
+  }, [posterOpen]);
 
   return (
     <main id="top">
@@ -277,7 +310,7 @@ export default function Home() {
 
       <section id="apply" className="apply-section">
         <div className="apply-atlas" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="apply-copy"><p className="kicker">05 / FOR EMERGING RESEARCHERS</p><h2>당신의 연구 질문을<br /><em>세계와 연결할 차례</em></h2><p>만 40세 미만 대학(원)생, 의대생, 전공의(MD), 박사후연구원 및 젊은 연구자를 대상으로<br />약 25명을 선발할 예정입니다.</p><div className="apply-notes"><span>1:5 소그룹</span><span>그룹별 3회</span><span>회차별 2시간 이상</span><span>성과물 1건 이상</span></div><div className="apply-actions"><a className="button button-primary" href="mailto:dku_gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청 문의">프로그램 문의하기 <span>↗</span></a><a className="button button-download" href="/downloads/dku-global-mentorship-application-2026.docx" download="[서식1-4] 2026년_바이오헬스_글로벌_석학_멘토십_프로그램_지원서식_v1.docx"><span className="download-label">멘토링 프로그램 참여신청서<br />양식 다운로드</span><span className="download-format">DOCX ↓</span></a></div><div className="application-guide"><span>신청 이메일</span><a href="mailto:dku_gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청">dku_gm2026@gmail.com</a><p>신청서 작성 후 첨부하여 제출</p></div></div>
+        <div className="apply-copy"><p className="kicker">05 / FOR EMERGING RESEARCHERS</p><h2>당신의 연구 질문을<br /><em>세계와 연결할 차례</em></h2><p>만 40세 미만 대학(원)생, 의대생, 전공의(MD), 박사후연구원 및 젊은 연구자를 대상으로<br />약 25명을 선발할 예정입니다.</p><div className="apply-notes"><span>1:5 소그룹</span><span>그룹별 3회</span><span>회차별 2시간 이상</span><span>성과물 1건 이상</span></div><div className="deadline"><span>D-DAY 접수마감</span><b aria-hidden="true">/</b><strong>2026년 8월 21일 까지</strong></div><div className="apply-actions"><a className="button button-primary" href="mailto:dku_gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청 문의">프로그램 문의하기 <span>↗</span></a><a className="button button-download" href="/downloads/dku-global-mentorship-application-2026.docx" download="[서식1-4] 2026년_바이오헬스_글로벌_석학_멘토십_프로그램_지원서식_v1.docx"><span className="download-label">멘토링 프로그램 참여신청서<br />양식 다운로드</span><span className="download-format">DOCX ↓</span></a><button className="button button-poster" ref={posterTriggerRef} type="button" onClick={() => setPosterOpen(true)}>참가 공고문 보기 <span>VIEW ↗</span></button></div><div className="application-guide"><span>신청 이메일</span><a href="mailto:dku_gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청">dku_gm2026@gmail.com</a><p>신청서 작성 후 첨부하여 제출</p></div></div>
       </section>
 
       {activeScholar !== null && (() => {
@@ -297,8 +330,16 @@ export default function Home() {
         </div>;
       })()}
 
+      {posterOpen && <div className="profile-backdrop poster-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setPosterOpen(false); }}>
+        <div className="poster-dialog" ref={posterDialogRef} role="dialog" aria-modal="true" aria-labelledby="poster-title">
+          <button className="profile-close poster-close" type="button" aria-label="참가 공고문 닫기" onClick={() => setPosterOpen(false)}>×</button>
+          <header><p>2026 GLOBAL MENTORSHIP PROGRAM</p><h2 id="poster-title">참가 공고문</h2></header>
+          <Image src="/posters/dku-mentorship-2026-poster.png" alt="2026년 글로벌 분자·세포생물학 멘토십 프로그램 참가 모집 공고문" width={1240} height={1754} unoptimized />
+        </div>
+      </div>}
+
       <footer>
-        <a className="brand footer-brand" href="#top"><Image className="dku-logo" src="/logos/dku-logo.jpg" alt="단국대학교 DKU" width={435} height={263} unoptimized /><span className="brand-divider" aria-hidden="true" /><Image className="dia-logo" src="/logos/dia-logo.png" alt="단국노화연구소 DIA" width={149} height={43} unoptimized /><span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING · v4</small></span></a>
+        <a className="brand footer-brand" href="#top"><Image className="dku-logo" src="/logos/dku-logo.jpg" alt="단국대학교 DKU" width={435} height={263} unoptimized /><span className="brand-divider" aria-hidden="true" /><Image className="dia-logo" src="/logos/dia-logo.png" alt="단국노화연구소 DIA" width={149} height={43} unoptimized /><span className="brand-name"><strong>DANKOOK UNIVERSITY</strong><small>DANKOOK INSTITUTE OF AGING · v4.1</small></span></a>
         <div className="footer-info"><strong>글로벌 분자·세포생물학 미래인재 양성 멘토십 프로그램</strong><p><b>주관</b> 단국대학교 <span>(단국노화연구소 DIA · 의과대학 · 단국대학교병원 · 의학융합학과)</span></p><p><b>지원</b> 보건복지부 · 한국보건산업진흥원</p><p><b>문의</b> <a href="mailto:dku_gm2026@dankook.ac.kr">dku_gm2026@dankook.ac.kr</a></p><p>충청남도 천안시 동남구 단대로 119</p></div>
         <div className="footer-meta"><p>GLOBAL MENTORSHIP PROGRAM<br />FOR FUTURE LEADERS IN<br />MOLECULAR &amp; CELLULAR BIOLOGY</p><a href="#top">TOP ↑</a></div>
         <p className="copyright">© 2026 DANKOOK UNIVERSITY. ALL RIGHTS RESERVED.</p>
