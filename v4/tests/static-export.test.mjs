@@ -45,7 +45,7 @@ test("exports a deployable static homepage", async () => {
   assert.match(html, /\/downloads\/dku-global-mentorship-application-2026\.docx/);
   assert.match(html, /단국노화연구소 DIA · 의과대학 · 단국대학교병원 · 의학융합학과/);
   assert.match(html, /보건복지부 · 한국보건산업진흥원/);
-  assert.match(html, /mailto:dku_gm2026@dankook\.ac\.kr/);
+  assert.doesNotMatch(html, /dku_gm2026@dankook\.ac\.kr/);
   assert.doesNotMatch(html, /bumlee@dankook\.ac\.kr/);
   assert.doesNotMatch(html, /초빙 예정/);
   assert.doesNotMatch(html, /PORTRAIT/);
