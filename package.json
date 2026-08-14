@@ -1,6 +1,6 @@
 {
-  "name": "dankook-bio-atlas",
-  "version": "0.1.0",
+  "name": "dankook-university-dia-biohealth",
+  "version": "5.0.0",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
