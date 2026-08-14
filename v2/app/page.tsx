@@ -205,7 +205,7 @@ export default function Home() {
 
       <section id="apply" className="apply-section">
         <div className="apply-atlas" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="apply-copy"><p className="kicker">05 / FOR EMERGING RESEARCHERS</p><h2>당신의 연구 질문을<br /><em>세계와 연결할 차례</em></h2><p>만 40세 미만 대학(원)생, 의대생, 전공의(MD), 박사후연구원 및 젊은 연구자를 대상으로 약 25명을 선발할 예정입니다.</p><div className="apply-notes"><span>1:5 소그룹</span><span>그룹별 3회</span><span>회차별 2시간 이상</span><span>성과물 1건 이상</span></div><a className="button button-primary" href="mailto:bumlee@dankook.ac.kr?subject=글로벌 분자·세포생물학 멘토십 문의">프로그램 문의하기 <span>↗</span></a></div>
+        <div className="apply-copy"><p className="kicker">05 / FOR EMERGING RESEARCHERS</p><h2>당신의 연구 질문을<br /><em>세계와 연결할 차례</em></h2><p>만 40세 미만 대학(원)생, 의대생, 전공의(MD), 박사후연구원 및 젊은 연구자를 대상으로 약 25명을 선발할 예정입니다.</p><div className="apply-notes"><span>1:5 소그룹</span><span>그룹별 3회</span><span>회차별 2시간 이상</span><span>성과물 1건 이상</span></div><a className="button button-primary" href="mailto:dku.gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 문의">프로그램 문의하기 <span>↗</span></a></div>
       </section>
 
       <footer>
