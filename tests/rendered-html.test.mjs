@@ -13,7 +13,7 @@ async function render() {
   );
 }
 
-test("server-renders the v5 mentorship homepage and email correction notice", async () => {
+test("server-renders the v5.1 mentorship homepage and participation guide", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -23,6 +23,9 @@ test("server-renders the v5 mentorship homepage and email correction notice", as
   assert.match(html, /접수 메일주소 확인/);
   assert.match(html, /dku_gm2026@gmail\.com/);
   assert.match(html, /dku\.gm2026@gmail\.com/);
+  assert.match(html, /MD PARTICIPATION GUIDE/);
+  assert.match(html, /13주 정규수업 형태가 아닙니다/);
+  assert.match(html, /1박 최대 10만원/);
   assert.match(html, /aria-labelledby="notice-title"/);
   assert.match(html, /확인했습니다/);
   assert.match(html, /DANKOOK UNIVERSITY/);
