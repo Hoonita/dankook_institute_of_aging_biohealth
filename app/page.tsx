@@ -369,6 +369,11 @@ export default function Home() {
             <article><span>02 / FLEXIBLE ACCESS</span><h3>온·오프라인 병행</h3><p>연구 컨설팅과 일부 교육은 상황에 따라 온라인 또는 대체 참여가 가능합니다.</p></article>
             <article><span>03 / GROUP MATCHING</span><h3>일정을 고려한 구성</h3><p>연구 관심 분야와 참여 가능한 요일·시간을 함께 고려해 소그룹을 구성합니다.</p></article>
           </div>
+          <aside className="application-support" aria-labelledby="application-support-title">
+            <span>APPLICATION &amp; PLANNING SUPPORT</span>
+            <h3 id="application-support-title">기본 신청서부터 시작하세요</h3>
+            <p>연구계획서 작성에 대한 부담을 덜어드리고자 <strong>초기에는 기본 신청서(연구 관심 분야 및 핵심 아이디어 중심)를 우선 접수</strong>받습니다. 정식 연구계획서는 <strong>운영진과의 1:1 사전 상담 및 기획 지원 세션을 통해 함께 구체화하고 완성해 나갈 예정</strong>이오니, 연구에 대한 열정과 관심이 있는 학생 여러분의 많은 지원 바랍니다.</p>
+          </aside>
           <aside className="travel-support" aria-label="참여자 교통비 및 숙박비 지원">
             <div><span>TRAVEL SUPPORT</span><strong>교통비</strong><p>철도운임 및 버스운임 등 실비 지원</p></div>
             <div><span>STAY SUPPORT</span><strong>숙박비</strong><p>실비 지원 · 1박 최대 10만원</p></div>

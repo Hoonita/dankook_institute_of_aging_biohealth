@@ -25,6 +25,9 @@ test("server-renders the v5.1 mentorship homepage and participation guide", asyn
   assert.match(html, /dku\.gm2026@gmail\.com/);
   assert.match(html, /MD PARTICIPATION GUIDE/);
   assert.match(html, /13주 정규수업 형태가 아닙니다/);
+  assert.match(html, /기본 신청서부터 시작하세요/);
+  assert.match(html, /연구 관심 분야 및 핵심 아이디어 중심/);
+  assert.match(html, /1:1 사전 상담 및 기획 지원 세션/);
   assert.match(html, /1박 최대 10만원/);
   assert.match(html, /aria-labelledby="notice-title"/);
   assert.match(html, /확인했습니다/);
