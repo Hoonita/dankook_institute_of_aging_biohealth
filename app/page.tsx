@@ -204,29 +204,34 @@ export default function Home() {
       <a className="skip-link" href="#content">본문으로 바로가기</a>
       {noticeOpen && <div className="notice-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setNoticeOpen(false); }}>
         <div className="notice-dialog" ref={noticeDialogRef} role="dialog" aria-modal="true" aria-labelledby="notice-title" aria-describedby="notice-description">
-          <button className="notice-close" type="button" aria-label="접수 이메일 주소 정정 안내 닫기" onClick={() => setNoticeOpen(false)}>×</button>
+          <button className="notice-close" type="button" aria-label="접수 이메일 및 제출 기한 안내 닫기" onClick={() => setNoticeOpen(false)}>×</button>
           <header className="notice-header">
-            <p>IMPORTANT NOTICE · 2026</p>
-            <h2 id="notice-title">글로벌 석학 멘토십 프로그램<br />접수 메일주소 확인</h2>
+            <p>IMPORTANT NOTICE · DEADLINE EXTENDED</p>
+            <h2 id="notice-title">메일주소를 혼동하지 않도록<br />꼭 확인하세요</h2>
           </header>
           <div className="notice-content" id="notice-description">
-            <p className="notice-heading">[공지] 바이오헬스 글로벌 석학 멘토십 프로그램 접수 이메일 주소 정정 안내</p>
+            <p className="notice-heading">[중요 공지] 신청서 접수 이메일 주소 확인 및 제출 기한 연장 안내</p>
             <p>안녕하세요, 바이오헬스 글로벌 석학 멘토십 프로그램 운영팀입니다.</p>
             <p>먼저 본 프로그램에 관심을 가져주시고 지원해 주시는 모든 분께 진심으로 감사드립니다.</p>
-            <p>기존에 배포된 공문 및 홍보 포스터에 기재된 <strong>신청서 접수 이메일 주소에 오기재</strong>가 있어 정정 안내를 드립니다. 이메일 주소의 언더바(_)가 마침표(.)로 변경되었으니 아래 정정된 주소로 서류를 제출해 주시기 바랍니다.</p>
+            <aside className="notice-deadline" aria-label="신청서 제출 기한 연장">
+              <span>DEADLINE EXTENDED</span>
+              <strong>2026년 8월 31일까지</strong>
+              <p>더 많은 지원자분께 참여 기회를 제공하고자 신청서 제출 기한을 연장합니다.</p>
+            </aside>
+            <p>기존에 배포된 공문 및 홍보 포스터에 기재된 <strong>신청서 접수 이메일 주소에 오기재</strong>가 있어 정정 안내를 드립니다. 신청서 제출 전 이메일 주소의 언더바(_)와 마침표(.)를 혼동하지 않도록 반드시 확인해 주세요.</p>
             <section className="email-correction" aria-label="접수 이메일 주소 정정 내용">
               <div className="email-old"><span>기존 · 오기재</span><s>dku_gm2026@gmail.com</s></div>
-              <div className="email-new"><span>변경 · 정정</span><strong>dku.gm2026@gmail.com</strong></div>
+              <div className="email-new"><span>정확한 접수 주소</span><strong>dku.gm2026@gmail.com</strong></div>
             </section>
             <aside className="notice-warning">
               <strong>기존 오기재 주소로 이미 제출하신 지원자분들께 안내드립니다.</strong>
-              <p>기존 주소로 발송한 메일은 정상적으로 접수되지 않았을 수 있습니다. 번거로우시겠지만 <b>정정된 주소로 신청 서류를 다시 한번 발송</b>해 주시기 바랍니다.</p>
+              <p>기존 주소로 발송한 메일은 정상적으로 접수되지 않았을 수 있습니다. 이미 제출하신 경우에도 <b>정확한 주소로 신청 서류를 다시 한번 발송</b>해 주세요.</p>
             </aside>
             <p>접수 과정에 혼선을 드려 대단히 죄송하며, 원활한 접수 및 프로그램 진행을 위해 최선을 다하겠습니다.</p>
             <p>감사합니다.</p>
           </div>
           <div className="notice-actions">
-            <button className="notice-confirm" type="button" onClick={() => setNoticeOpen(false)}>확인했습니다</button>
+            <button className="notice-confirm" type="button" onClick={() => setNoticeOpen(false)}>내용을 확인했습니다</button>
             <a href="mailto:dku.gm2026@gmail.com?subject=글로벌 석학 멘토십 프로그램 신청 문의">정정된 주소로 문의하기 <span>↗</span></a>
           </div>
         </div>
@@ -395,7 +400,7 @@ export default function Home() {
 
       <section id="apply" className="apply-section">
         <div className="apply-atlas" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="apply-copy"><p className="kicker">06 / FOR EMERGING RESEARCHERS</p><h2>당신의 연구 질문을<br /><em>세계와 연결할 차례</em></h2><p>만 40세 미만 대학(원)생, 의대생, 전공의(MD), 박사후연구원 및 젊은 연구자를 대상으로<br />약 25명을 선발할 예정입니다.</p><div className="apply-notes"><span>1:5 소그룹</span><span>그룹별 3회</span><span>회차별 2시간 이상</span><span>성과물 1건 이상</span></div><div className="deadline"><span>D-DAY 접수마감</span><b aria-hidden="true">/</b><strong>2026년 8월 21일 까지</strong></div><div className="apply-actions"><a className="button button-primary" href="mailto:dku.gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청 문의">프로그램 문의하기 <span>↗</span></a><a className="button button-download" href="/downloads/dku-global-mentorship-application-2026.docx" download="[서식1-4] 2026년_바이오헬스_글로벌_석학_멘토십_프로그램_지원서식_v1.docx"><span className="download-label">멘토링 프로그램 참여신청서<br />양식 다운로드</span><span className="download-format">DOCX ↓</span></a><button className="button button-poster" ref={posterTriggerRef} type="button" onClick={() => setPosterOpen(true)}>참가 공고문 보기 <span>VIEW ↗</span></button></div><div className="application-guide"><span>신청 이메일</span><a href="mailto:dku.gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청">dku.gm2026@gmail.com</a><p>신청서 작성 후 첨부하여 제출</p></div></div>
+        <div className="apply-copy"><p className="kicker">06 / FOR EMERGING RESEARCHERS</p><h2>당신의 연구 질문을<br /><em>세계와 연결할 차례</em></h2><p>만 40세 미만 대학(원)생, 의대생, 전공의(MD), 박사후연구원 및 젊은 연구자를 대상으로<br />약 25명을 선발할 예정입니다.</p><div className="apply-notes"><span>1:5 소그룹</span><span>그룹별 3회</span><span>회차별 2시간 이상</span><span>성과물 1건 이상</span></div><div className="deadline"><span>접수기간 연장</span><b aria-hidden="true">/</b><strong>2026년 8월 31일까지</strong></div><div className="apply-actions"><a className="button button-primary" href="mailto:dku.gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청 문의">프로그램 문의하기 <span>↗</span></a><a className="button button-download" href="/downloads/dku-global-mentorship-application-2026.docx" download="[서식1-4] 2026년_바이오헬스_글로벌_석학_멘토십_프로그램_지원서식_v1.docx"><span className="download-label">멘토링 프로그램 참여신청서<br />양식 다운로드</span><span className="download-format">DOCX ↓</span></a><button className="button button-poster" ref={posterTriggerRef} type="button" onClick={() => setPosterOpen(true)}>참가 공고문 보기 <span>VIEW ↗</span></button></div><div className="application-guide"><span>신청 이메일</span><a href="mailto:dku.gm2026@gmail.com?subject=글로벌 분자·세포생물학 멘토십 프로그램 신청">dku.gm2026@gmail.com</a><p>신청서 작성 후 첨부하여 제출</p></div></div>
       </section>
 
       {activeScholar !== null && (() => {

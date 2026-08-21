@@ -44,6 +44,10 @@ em { font-style:normal; color:var(--teal); }
 .notice-content { padding:30px 38px 12px; font-size:14px; line-height:1.75; }
 .notice-content p { margin:0 0 16px; }
 .notice-heading { color:var(--teal); font-size:16px; font-weight:800; word-break:keep-all; }
+.notice-deadline { margin:24px 0; padding:20px 22px; border-left:5px solid var(--lime); background:var(--navy); color:var(--ivory); }
+.notice-deadline>span { display:block; margin-bottom:8px; color:var(--lime); font:700 9px var(--font-geist-mono),monospace; letter-spacing:.14em; }
+.notice-deadline>strong { display:block; color:var(--lime); font-size:clamp(25px,3.5vw,36px); line-height:1.2; letter-spacing:-.04em; word-break:keep-all; }
+.notice-deadline>p { margin:9px 0 0; color:#c4d0d5; }
 .email-correction { display:grid; grid-template-columns:1fr 1fr; margin:26px 0; border:1px solid var(--line-light); }
 .email-correction>div { padding:20px; min-width:0; }
 .email-correction>div+div { border-left:1px solid var(--line-light); }

@@ -20,7 +20,10 @@ test("server-renders the v5.1 mentorship homepage and participation guide", asyn
 
   const html = await response.text();
   assert.match(html, /글로벌 석학 멘토십 프로그램/);
-  assert.match(html, /접수 메일주소 확인/);
+  assert.match(html, /메일주소를 혼동하지 않도록/);
+  assert.match(html, /신청서 접수 이메일 주소 확인 및 제출 기한 연장 안내/);
+  assert.match(html, /2026년 8월 31일까지/);
+  assert.doesNotMatch(html, /2026년 8월 21일 까지/);
   assert.match(html, /dku_gm2026@gmail\.com/);
   assert.match(html, /dku\.gm2026@gmail\.com/);
   assert.match(html, /MD PARTICIPATION GUIDE/);
@@ -30,6 +33,6 @@ test("server-renders the v5.1 mentorship homepage and participation guide", asyn
   assert.match(html, /1:1 사전 상담 및 기획 지원 세션/);
   assert.match(html, /1박 최대 10만원/);
   assert.match(html, /aria-labelledby="notice-title"/);
-  assert.match(html, /확인했습니다/);
+  assert.match(html, /내용을 확인했습니다/);
   assert.match(html, /DANKOOK UNIVERSITY/);
 });

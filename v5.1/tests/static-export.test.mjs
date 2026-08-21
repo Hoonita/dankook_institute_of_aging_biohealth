@@ -19,6 +19,10 @@ test("exports the v5.1 mentorship homepage and participation guide", async () =>
   assert.match(html, /Global Molecular &amp; Cellular Biology Mentorship/);
   assert.match(html, /MD PARTICIPATION GUIDE/);
   assert.match(html, /13주 정규수업 형태가 아닙니다/);
+  assert.match(html, /메일주소를 혼동하지 않도록/);
+  assert.match(html, /신청서 접수 이메일 주소 확인 및 제출 기한 연장 안내/);
+  assert.match(html, /2026년 8월 31일까지/);
+  assert.doesNotMatch(html, /2026년 8월 21일 까지/);
   assert.match(html, /기본 신청서부터 시작하세요/);
   assert.match(html, /연구 관심 분야 및 핵심 아이디어 중심/);
   assert.match(html, /1:1 사전 상담 및 기획 지원 세션/);
