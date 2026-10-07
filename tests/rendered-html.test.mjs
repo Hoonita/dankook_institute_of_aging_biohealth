@@ -13,26 +13,34 @@ async function render() {
   );
 }
 
-test("server-renders the v5.1 mentorship homepage and participation guide", async () => {
+test("server-renders the v6 integrated mentorship program", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /글로벌 석학 멘토십 프로그램/);
-  assert.match(html, /메일주소를 혼동하지 않도록/);
-  assert.match(html, /신청서 접수 이메일 주소 확인 및 제출 기한 연장 안내/);
+  assert.match(html, /글로벌 분자·세포생물학 멘토십/);
+  assert.doesNotMatch(html, /메일주소를 혼동하지 않도록/);
+  assert.doesNotMatch(html, /신청서 접수 이메일 주소 확인 및 제출 기한 연장 안내/);
   assert.match(html, /2026년 8월 31일까지/);
   assert.doesNotMatch(html, /2026년 8월 21일 까지/);
-  assert.match(html, /dku_gm2026@gmail\.com/);
+  assert.doesNotMatch(html, /dku_gm2026@gmail\.com/);
   assert.match(html, /dku\.gm2026@gmail\.com/);
+  assert.match(html, /INTEGRATED RESEARCH PROGRAM/);
+  assert.match(html, /인간질환의 분자·세포생물학적 기전 연구/);
+  assert.doesNotMatch(html, /DISEASE MODELING/);
+  assert.match(html, /1:1 온라인 2차 멘토링/);
+  assert.match(html, /미니 프로그램 1회차/);
+  assert.match(html, /미니 프로그램 2·3회차/);
+  assert.match(html, /Wet-lab/);
+  assert.match(html, /포스터 발표 · 국제 심포지엄/);
   assert.match(html, /MD PARTICIPATION GUIDE/);
   assert.match(html, /13주 정규수업 형태가 아닙니다/);
   assert.match(html, /기본 신청서부터 시작하세요/);
   assert.match(html, /연구 관심 분야 및 핵심 아이디어 중심/);
   assert.match(html, /1:1 사전 상담 및 기획 지원 세션/);
   assert.match(html, /1박 최대 10만원/);
-  assert.match(html, /aria-labelledby="notice-title"/);
-  assert.match(html, /내용을 확인했습니다/);
+  assert.doesNotMatch(html, /aria-labelledby="notice-title"/);
+  assert.doesNotMatch(html, /내용을 확인했습니다/);
   assert.match(html, /DANKOOK UNIVERSITY/);
 });
